@@ -43,7 +43,7 @@ export default function SearchBar({
 
   return (
     <div className="flex w-full justify-center gap-4">
-      <div className="flex w-[526px] relative rounded-lg items-center gap-4 px-6 py-4.5 bg-neutral-800">
+      <div className="flex w-[526px] relative rounded-lg items-center gap-4 px-6 py-4.5 bg-neutral-800 hover:bg-neutral-700">
         <Image
           src="/assets/icon-search.svg"
           alt="Search"
@@ -73,7 +73,7 @@ export default function SearchBar({
           </div>
         )}
       </div>
-      <button className="flex items-center text-xl rounded-lg bg-blue-500 px-6 py-4">
+      <button className="flex items-center text-xl rounded-lg bg-blue-500 hover:bg-blue-700 px-6 py-4 border border-transparent">
         Search
       </button>
     </div>

@@ -39,7 +39,7 @@ export default function UnitsDropdown({
   return (
     <div className="flex flex-col">
       <button
-        className="flex gap-2.5 rounded-lg bg-neutral-800 px-4 py-3 text-white"
+        className="flex gap-2.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 px-4 py-3 text-white"
         onClick={toggleDropdown}
       >
         <Image
