@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { useState } from "react";
+import WeatherModel from "@/models/WeatherModel";
 
 export default function DropdownDays({
   selectDay,
   setSelectDay,
+  hourlyForecast,
 }: {
   selectDay: string;
   setSelectDay: (day: string) => void;
+  hourlyForecast: WeatherModel["hourly"] | null;
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +25,7 @@ export default function DropdownDays({
         className="flex w-fit h-fit items-center rounded-lg bg-neutral-600 px-4 py-2 gap-3"
         onClick={toggleDropdown}
       >
-        <p>{selectDay}</p>
+        <p>{hourlyForecast ? selectDay : "-"}</p>
         <Image
           src="/assets/icon-dropdown.svg"
           alt="Chevron Down"

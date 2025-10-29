@@ -31,6 +31,7 @@ export default function SearchBar({
     };
 
     if (input.length > 1) fetchGeocoding();
+    else setSearchResults(null);
   }, [input]);
 
   const selectPlace = (result: GeocodingModel) => {
@@ -59,17 +60,30 @@ export default function SearchBar({
           value={input}
           className="flex grow text-xl bg-transparent font-dm-sans text-neutral-0 placeholder:text-neutral-200 focus:outline-none"
         />
-        {isOpen && searchResults && searchResults.length > 0 && (
+        {isOpen && input.length > 0 && (
           <div className="flex flex-col w-[526px] absolute top-18 rounded-xl  -translate-x-6 p-2 bg-neutral-800 border border-neutral-700 gap-1">
-            {searchResults?.map((result) => (
-              <button
-                key={result.id}
-                className="flex px-2 py-2.5 border border-transparent hover:border-neutral-600 hover:bg-neutral-700 rounded-lg"
-                onMouseDown={() => selectPlace(result)}
-              >
-                {result.name}, {result.country}
-              </button>
-            ))}
+            {searchResults ? (
+              searchResults.map((result) => (
+                <button
+                  key={result.id}
+                  className="flex px-2 py-2.5 border border-transparent hover:border-neutral-600 hover:bg-neutral-700 rounded-lg"
+                  onMouseDown={() => selectPlace(result)}
+                >
+                  {result.name}, {result.country}
+                </button>
+              ))
+            ) : (
+              <div className="flex px-2 py-2.5 border border-transparent gap-2.5">
+                <Image
+                  src="/assets/icon-loading.svg"
+                  alt="Loading"
+                  width={16}
+                  height={19}
+                  className="animate-[spin_3s_linear_infinite]"
+                />
+                <p>Search in progress</p>
+              </div>
+            )}
           </div>
         )}
       </div>

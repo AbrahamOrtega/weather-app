@@ -70,4 +70,6 @@ const weatherData = {
 };
 
 return weatherData;
+
+
 }

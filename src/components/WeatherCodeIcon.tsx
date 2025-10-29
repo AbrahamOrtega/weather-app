@@ -4,10 +4,12 @@ export default function WeatherIcon({
   weatherCode,
   width,
   height,
+  className,
 }: {
   weatherCode: number;
   width: number;
   height: number;
+  className?: string;
 }) {
   switch (weatherCode) {
     case 0:
@@ -17,6 +19,7 @@ export default function WeatherIcon({
           alt="Sunny"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 1:
@@ -27,6 +30,7 @@ export default function WeatherIcon({
           alt="Partly Cloudy"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 3:
@@ -36,6 +40,7 @@ export default function WeatherIcon({
           alt="Overcast"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 45:
@@ -46,6 +51,7 @@ export default function WeatherIcon({
           alt="Fog"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 51:
@@ -59,6 +65,7 @@ export default function WeatherIcon({
           alt="Drizzle"
           width={width}
           height={height}
+          className={className}
         />
       );
 
@@ -76,6 +83,7 @@ export default function WeatherIcon({
           alt="Rain"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 71:
@@ -90,6 +98,7 @@ export default function WeatherIcon({
           alt="Snow"
           width={width}
           height={height}
+          className={className}
         />
       );
     case 95:
@@ -101,6 +110,7 @@ export default function WeatherIcon({
           alt="Thunderstorm"
           width={width}
           height={height}
+          className={className}
         />
       );
     default:
