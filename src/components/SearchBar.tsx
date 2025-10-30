@@ -19,6 +19,7 @@ export default function SearchBar({
   const [searchResults, setSearchResults] = useState<GeocodingModel[] | null>(
     null
   );
+  const [isLoading, setIsLoading] = useState(false);
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -26,7 +27,9 @@ export default function SearchBar({
 
   useEffect(() => {
     const fetchGeocoding = async () => {
+      setIsLoading(true);
       const data = await getGeocoding(input);
+      setIsLoading(false);
       setSearchResults(data);
     };
 
@@ -72,7 +75,7 @@ export default function SearchBar({
                   {result.name}, {result.country}
                 </button>
               ))
-            ) : (
+            ) : isLoading ? (
               <div className="flex px-2 py-2.5 border border-transparent gap-2.5">
                 <Image
                   src="/assets/icon-loading.svg"
@@ -82,6 +85,16 @@ export default function SearchBar({
                   className="animate-[spin_3s_linear_infinite]"
                 />
                 <p>Search in progress</p>
+              </div>
+            ) : (
+              <div className="flex px-2 py-2.5 border border-transparent gap-2.5">
+                <Image
+                  src="/assets/icon-error.svg"
+                  alt="Error"
+                  width={16}
+                  height={19}
+                />
+                <p>No search result found!</p>
               </div>
             )}
           </div>
