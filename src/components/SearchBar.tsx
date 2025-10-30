@@ -43,8 +43,8 @@ export default function SearchBar({
   };
 
   return (
-    <div className="flex w-full justify-center gap-4">
-      <div className="flex w-[526px] relative rounded-lg items-center gap-4 px-6 py-4.5 bg-neutral-800 hover:bg-neutral-700">
+    <div className="flex flex-col md:flex-row w-full justify-center gap-4">
+      <div className="flex md:w-full lg:w-[526px] relative rounded-lg items-center gap-4 px-6 py-4.5 bg-neutral-800 hover:bg-neutral-700">
         <Image
           src="/assets/icon-search.svg"
           alt="Search"
@@ -61,7 +61,7 @@ export default function SearchBar({
           className="flex grow text-xl bg-transparent font-dm-sans text-neutral-0 placeholder:text-neutral-200 focus:outline-none"
         />
         {isOpen && input.length > 0 && (
-          <div className="flex flex-col w-[526px] absolute top-18 rounded-xl  -translate-x-6 p-2 bg-neutral-800 border border-neutral-700 gap-1">
+          <div className="flex flex-col w-full lg:w-[526px] absolute z-10 top-18 rounded-xl  -translate-x-6 p-2 bg-neutral-800 border border-neutral-700 gap-1">
             {searchResults ? (
               searchResults.map((result) => (
                 <button
@@ -87,7 +87,7 @@ export default function SearchBar({
           </div>
         )}
       </div>
-      <button className="flex items-center text-xl rounded-lg bg-blue-500 hover:bg-blue-700 px-6 py-4 border border-transparent">
+      <button className="flex items-center justify-center text-xl rounded-lg bg-blue-500 hover:bg-blue-700 px-6 py-4 border border-transparent">
         Search
       </button>
     </div>

@@ -34,7 +34,7 @@ export default function DropdownDays({
         />
       </button>
       {isOpen && (
-        <div className="flex flex-col w-48 translate-y-12 -translate-x-18 rounded-xl absolute z-10 bg-neutral-800 border border-neutral-600 p-2 gap-1">
+        <div className="flex flex-col w-48 z-10 translate-y-12 -translate-x-18 rounded-xl absolute bg-neutral-800 border border-neutral-600 p-2 gap-1">
           {DaysList.map((item) => {
             return (
               <button

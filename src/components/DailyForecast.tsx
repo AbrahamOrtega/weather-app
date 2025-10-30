@@ -9,7 +9,7 @@ export default function DailyForecast({
   return (
     <div className="flex flex-col mt-12 gap-5">
       <h3 className="font-dm-sans text-[20px] font-semibold">Daily forecast</h3>
-      <div className="flex gap-4 overflow-x-auto scrollbar">
+      <div className="grid grid-flow-row grid-cols-3 md:flex gap-4 overflow-x-auto scrollbar">
         {dailyForecast
           ? dailyForecast.time.map((_, i) => (
               <div

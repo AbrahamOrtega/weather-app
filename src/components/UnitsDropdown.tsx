@@ -39,17 +39,19 @@ export default function UnitsDropdown({
   return (
     <div className="flex flex-col">
       <button
-        className="flex gap-2.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 px-4 py-3 text-white"
+        className="flex items-center gap-2.5 rounded-lg bg-neutral-800 hover:bg-neutral-700 px-4 py-3 text-white"
         onClick={toggleDropdown}
       >
         <Image
+          className="flex w-[14px] h-[14px] md:w-4 md:h-4"
           src="/assets/icon-units.svg"
           alt="Units"
           width={16}
           height={16}
         />
-        <span className="font-dm-sans">Units</span>
+        <span className="text-sm md:text-base font-dm-sans">Units</span>
         <Image
+          className="flex w-[14px] h-[14px] md:w-4 md:h-4"
           src="/assets/icon-dropdown.svg"
           alt="Chevron Down"
           width={16}
@@ -57,7 +59,7 @@ export default function UnitsDropdown({
         />
       </button>
       {isOpen && (
-        <div className="flex flex-col w-56 absolute translate-y-14 -translate-x-26 rounded-xl bg-neutral-800 border border-neutral-600 py-1.5 px-2 p-1">
+        <div className="flex flex-col w-56 absolute z-20 translate-y-14 -translate-x-26 rounded-xl bg-neutral-800 border border-neutral-600 py-1.5 px-2 p-1">
           <button
             className="flex px-2 py-2.5 hover:bg-neutral-700 rounded-lg"
             onClick={toggleUnits}

@@ -21,13 +21,13 @@ export default function CurrentForecast({
       <div
         className={`flex w-full rounded-[20px] bg-cover ${
           currentForecast
-            ? "bg-[url('/assets/bg-today-large.svg')]"
+            ? "bg-[url('/assets/bg-today-small.svg')] md:bg-[url('/assets/bg-today-large.svg')]"
             : "bg-neutral-800"
-        }  h-[286px] justify-between items-center px-6 py-20`}
+        }  h-[286px] md:justify-between md:gap-0 items-center px-6 md:py-20`}
       >
         {currentForecast ? (
-          <div className="flex w-full h-full justify-between items-center px-6 py-20">
-            <div className="flex flex-col">
+          <div className="flex flex-col md:flex-row w-full gap-4 md:justify-between items-center md:px-6 md:py-20">
+            <div className="flex flex-col text-center md:text-left">
               <h3 className="text-[28px] font-bold font-dm-sans">
                 {`${city}, ${country}`}
               </h3>
@@ -45,7 +45,7 @@ export default function CurrentForecast({
               </p>
             </div>
 
-            <div className="flex gap-5">
+            <div className="flex items-center gap-5">
               <WeatherIcon
                 weatherCode={currentForecast.weather_code || 0}
                 width={96}
@@ -68,7 +68,7 @@ export default function CurrentForecast({
         )}
       </div>
       {/* Weather Details Card */}
-      <div className="flex w-full mt-8 gap-6">
+      <div className="grid grid-flow-row grid-cols-2 md:flex w-full mt-8 gap-6">
         {/* Temperature */}
         <div className="flex w-full flex-col rounded-xl gap-6 bg-neutral-800 p-5 border-2 border-neutral-600">
           <p className="font-dm-sans text-[18px] text-neutral-200">
@@ -107,9 +107,11 @@ export default function CurrentForecast({
           </p>
           <p className="font-dm-sans text-[32px]">
             {currentForecast
-              ? `${currentForecast?.precipitation.toFixed(1)} ${
-                  unitConf.precipitation === "mm" ? "mm" : "in"
-                }`
+              ? `${
+                  parseFloat(currentForecast?.precipitation.toFixed(1)) > 0
+                    ? currentForecast?.precipitation.toFixed(1)
+                    : 0
+                } ${unitConf.precipitation === "mm" ? "mm" : "in"}`
               : "-"}
           </p>
         </div>

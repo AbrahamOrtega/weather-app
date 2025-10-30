@@ -32,7 +32,7 @@ export default function Home() {
           const data = await getForecast(latitude, longitude, unitConf);
           setForecast(data);
         } catch (err) {
-          console.log(err);
+          console.error(err);
           setError(true);
         }
       }
@@ -42,14 +42,20 @@ export default function Home() {
   }, [latitude, longitude, unitConf]);
 
   return (
-    <div className="flex flex-col px-28 py-12">
+    <div className="flex flex-col p-4 md:px-6 md:py-6 xl:px-28 xl:py-12">
       <div className="flex w-full justify-between items-center">
-        <Image src="/assets/logo.svg" alt="Menu" width={196} height={40} />
+        <Image
+          className="flex w-[138px] h-[28px] md:w-[196px] md:h-[40px]"
+          src="/assets/logo.svg"
+          alt="Menu"
+          width={196}
+          height={40}
+        />
         <UnitsDropdown unitConf={unitConf} setUnitConf={setUnitConf} />
       </div>
       {!error ? (
         <div className="flex flex-col">
-          <div className="my-16 flex w-full justify-center text-[52px] font-bricolage-grotesque">
+          <div className="flex w-full my-12 md:my-16 text-center justify-center text-[52px] font-bricolage-grotesque">
             How&apos;s the sky looking today?
           </div>
 
@@ -61,7 +67,7 @@ export default function Home() {
             setCountry={setCountry}
           />
 
-          <div className="flex w-full mt-12 gap-8">
+          <div className="flex flex-col lg:flex-row w-full mt-8 md:mt-12 gap-8">
             {/* Current Forecast Card */}
             <CurrentForecast
               currentForecast={forecast?.current || null}

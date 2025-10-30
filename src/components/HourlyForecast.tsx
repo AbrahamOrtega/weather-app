@@ -35,7 +35,7 @@ export default function HourlyForecast({
     }, []) || [];
 
   return (
-    <div className="flex flex-col w-[384px] h-[741px] overflow-hidden gap-4 rounded-[20px] bg-neutral-800 pl-6 py-6">
+    <div className="flex flex-col md:w-full lg:w-[384px] h-[741px] overflow-hidden gap-4 rounded-[20px] bg-neutral-800 pl-6 py-6">
       <div className="flex w-full justify-between pr-6">
         <p className="font-dm-sans text-[20px]">Hourly forecast</p>
         <DropdownDays
