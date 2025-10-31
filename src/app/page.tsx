@@ -18,6 +18,7 @@ export default function Home() {
   const [longitude, setLongitude] = useState<number>(13.41); // 13.41
   const [city, setCity] = useState<string>("Berlin"); // Berlin
   const [country, setCountry] = useState<string>("Germany"); // Germany
+  const [noResults, setNoResults] = useState(false);
   const [unitConf, setUnitConf] = useState<UnitConfModel>({
     temperature: "celsius",
     windSpeed: "kmh",
@@ -25,6 +26,7 @@ export default function Home() {
   }); // metric
 
   useEffect(() => {
+    setForecast(null);
     // fetch forecast when coordinates change
     const fetchForecast = async () => {
       if (latitude && longitude) {
@@ -65,20 +67,29 @@ export default function Home() {
             setLongitude={setLongitude}
             setCity={setCity}
             setCountry={setCountry}
+            setForecast={setForecast}
+            setNoResults={setNoResults}
+            setError={setError}
           />
 
-          <div className="flex flex-col lg:flex-row w-full mt-8 md:mt-12 gap-8">
-            {/* Current Forecast Card */}
-            <CurrentForecast
-              currentForecast={forecast?.current || null}
-              dailyForecast={forecast?.daily || null}
-              city={city}
-              country={country}
-              unitConf={unitConf}
-            />
-            {/* Hourly Forecast Card */}
-            <HourlyForecast hourlyForecast={forecast?.hourly || null} />
-          </div>
+          {noResults ? (
+            <div className="flex w-full justify-center mt-12 text-center font-bold text-[28px]">
+              <h3>No search result found!</h3>
+            </div>
+          ) : (
+            <div className="flex flex-col lg:flex-row w-full mt-8 md:mt-12 gap-8">
+              {/* Current Forecast Card */}
+              <CurrentForecast
+                currentForecast={forecast?.current || null}
+                dailyForecast={forecast?.daily || null}
+                city={city}
+                country={country}
+                unitConf={unitConf}
+              />
+              {/* Hourly Forecast Card */}
+              <HourlyForecast hourlyForecast={forecast?.hourly || null} />
+            </div>
+          )}
         </div>
       ) : (
         <ApiError />
